@@ -1,8 +1,14 @@
 # Proxy-inverso
 
-Esta documentación tiene como evidenciar el código y configuración que se utilizó para crear un reverse proxy con Nginx.
+Esta documentación tiene como objetivo evidenciar el código y configuración que se utilizó para crear un reverse proxy con Nginx.
 
-## Ejecución de la aplicación en docker-compose
+## Configuración de Nginx como reverse proxy
+
+Dependiendo de la distribución de Linux, el archivo de configuración **nginx.conf** se encuentra en la ruta ***/usr/local/nginx/conf***, ***/etc/nginx***, o ***/usr/local/etc/nginx***.
+
+El archivo de configuración **machines.conf** debe ser copiado en la ruta ***/etc/nginx/conf.d***. Cabe resaltar que dependiendo de la distribución, existen los directorios ***/etc/nginx/sites-available*** y ***/etc/nginx/sites-enabled***, en estos casos el archivo debe ir dentro de la primera ruta y hacer un enlace simbólico con la segunda ruta.
+
+## Ejecución de la aplicación con docker-compose
 
 En la máquina virtual que contiene Docker, se ejecutará una aplicación de la siguiente forma:
 
@@ -29,7 +35,7 @@ cd ${CURRENT_WORKDIR}
 ```
 chmod +x script.sh && ./script.sh
 ```
-- Ingresar al directorio **example** y ejecutar ***docker-compose***
+- Ingresar al directorio **example** y ejecutar `docker-compose up`
 ```
 cd example && docker-compose up
 ```
